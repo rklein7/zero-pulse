@@ -20,13 +20,14 @@ public class ParallaxLayer : MonoBehaviour
 
     private void Start()
     {
-        cam = Camera.main.transform;
-        lastCamPos = cam.position;
+        if (Camera.main != null) cam = Camera.main.transform;
+        if (cam != null) lastCamPos = cam.position;
     }
 
     // LateUpdate: depois da camera se mover no frame
 private void LateUpdate()
     {
+        if (cam == null) return;
         Vector3 delta = cam.position - lastCamPos;
         transform.position += new Vector3(delta.x * parallaxFactor, 0f, 0f);
         lastCamPos = cam.position;

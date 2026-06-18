@@ -31,8 +31,23 @@ public class PlayerController : MonoBehaviour
     private bool jumpCut;            // soltou o pulo durante a subida?
     private bool isGrounded;
     private bool isSliding;
+    private bool slideOffsetApplied; // controla o ajuste de posicao do slide (evita acumulo)
+    private bool arenaMode;          // boss: movimento livre (A/D) em vez de corrida automatica
+    private float horizontalInput;   // leitura do eixo no Update, uso no FixedUpdate
 
     public bool IsAlive { get; private set; } = true;
+
+    // Chamado pelo NexusBoss: liga/desliga o movimento livre da arena
+    public void SetArenaMode(bool active)
+    {
+        arenaMode = active;
+    }
+
+    // Chamado pelo ZoneManager para mudar a velocidade por zona
+    public void SetRunSpeed(float speed)
+    {
+        runSpeed = speed;
+    }
 
     private void Awake()
     {
@@ -44,6 +59,9 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         if (!IsAlive) return;
+
+        // Eixo horizontal (so usado no modo arena do boss)
+        horizontalInput = Input.GetAxisRaw("Horizontal");
 
         // Jump buffer: guarda o aperto por alguns ms
         if (Input.GetButtonDown("Jump")) bufferCounter = jumpBuffer;
@@ -72,8 +90,9 @@ public class PlayerController : MonoBehaviour
         // Coyote: cheio no chao, esvaziando no ar
         coyoteCounter = isGrounded ? coyoteTime : coyoteCounter - Time.fixedDeltaTime;
 
-        // Corrida automatica
-        rb.linearVelocity = new Vector2(runSpeed, rb.linearVelocity.y);
+        // Corrida automatica (ou movimento livre na arena do boss)
+        float xVel = arenaMode ? horizontalInput * runSpeed : runSpeed;
+        rb.linearVelocity = new Vector2(xVel, rb.linearVelocity.y);
 
         // Pulo: precisa de buffer ativo + coyote ativo
         if (bufferCounter > 0f && coyoteCounter > 0f && !isSliding)
@@ -98,17 +117,25 @@ public class PlayerController : MonoBehaviour
 
     private void StartSlide()
     {
+        if (isSliding) return;
         isSliding = true;
         // Achata o personagem (collider acompanha a escala)
         transform.localScale = new Vector3(normalScale.x * 1.1f, normalScale.y * 0.5f, 1f);
-        // Desce o centro para manter os pes no chao
+        // Desce o centro para manter os pes no chao (uma unica vez)
         rb.position += Vector2.down * (normalScale.y * 0.25f);
+        slideOffsetApplied = true;
     }
 
     private void StopSlide()
     {
+        if (!isSliding) return;
         isSliding = false;
-        rb.position += Vector2.up * (normalScale.y * 0.26f);
+        // Desfaz EXATAMENTE o mesmo offset aplicado (evita afundar com o tempo)
+        if (slideOffsetApplied)
+        {
+            rb.position += Vector2.up * (normalScale.y * 0.25f);
+            slideOffsetApplied = false;
+        }
         transform.localScale = normalScale;
     }
 
@@ -117,6 +144,9 @@ public class PlayerController : MonoBehaviour
     {
         if (!IsAlive) return;
         IsAlive = false;
+        // Garante que o player nao reaparece achatado num respawn
+        transform.localScale = normalScale;
+        isSliding = false;
         rb.linearVelocity = Vector2.zero;
         rb.simulated = false;           // desliga a fisica
         gameObject.SetActive(false);    // placeholder de animacao de morte

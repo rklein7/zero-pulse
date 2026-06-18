@@ -14,7 +14,8 @@ public class EnergyPickup : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
-        GameManager.Instance.AddEnergy(amount);
+        if (GameManager.Instance != null)
+            GameManager.Instance.AddEnergy(amount);
 
         if (collectSfx != null)
             AudioSource.PlayClipAtPoint(collectSfx, transform.position, 0.8f);
