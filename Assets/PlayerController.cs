@@ -9,7 +9,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Header("Movimento")]
-    [SerializeField] private float runSpeed = 7f;
+    [SerializeField] private float runSpeed = 10f;
     [SerializeField] private float jumpForce = 14f;
 
     [Header("Game feel")]

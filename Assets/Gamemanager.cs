@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Transmissor (energia)")]
     [SerializeField] private float maxEnergy = 100f;
-    [SerializeField] private float drainPerSecond = 6f;
+    [SerializeField] private float drainPerSecond = 14f;
 
     [Header("Referencias (arrastar no Inspector)")]
     [SerializeField] private PlayerController player;

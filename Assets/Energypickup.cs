@@ -8,7 +8,7 @@ using UnityEngine;
 // ============================================================
 public class EnergyPickup : MonoBehaviour
 {
-    [SerializeField] private float amount = 15f;
+    [SerializeField] private float amount = 25f;
     [SerializeField] private AudioClip collectSfx; // som de coleta (opcional)
 
     private void OnTriggerEnter2D(Collider2D other)
