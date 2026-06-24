@@ -53,6 +53,14 @@ public class NexusBoss : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioClip phaseClearSfx;
 
+    [Header("Fluxo de fase")]
+    // Neste jogo o NEXUS e o FIM (true) -> chama Win() (tela de vitoria final).
+    // Se algum dia o boss virar uma fase do MEIO, marque false -> ao vencer
+    // ele AVANCA para a proxima fase via GameManager.LevelComplete().
+    [SerializeField] private bool isFinalBoss = true;
+    // Usado so quando isFinalBoss = false. Vazio = proxima cena da Scene List.
+    [SerializeField] private string nextSceneName = "";
+
     private bool started;
     private int weakpointHitsRemaining;
 
@@ -198,6 +206,14 @@ public class NexusBoss : MonoBehaviour
 
     private void Victory()
     {
-        if (GameManager.Instance != null) GameManager.Instance.Win();
+        if (GameManager.Instance == null) return;
+
+        // Devolve o controle normal ao player (sai do modo arena) antes de avancar.
+        if (player != null) player.SetArenaMode(false);
+
+        if (isFinalBoss)
+            GameManager.Instance.Win();             // boss final: tela de vitoria
+        else
+            GameManager.Instance.LevelComplete(nextSceneName); // boss no meio: avanca de fase
     }
 }
