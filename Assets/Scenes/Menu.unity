@@ -1527,7 +1527,7 @@ MonoBehaviour:
   botaoJogar: {fileID: 1533104937}
   botaoTutorial: {fileID: 1480990232}
   botaoIniciar: {fileID: 111917103}
-  primeiraFase: Fase1
+  primeiraFase: Intro
 --- !u!4 &853365377
 Transform:
   m_ObjectHideFlags: 0
