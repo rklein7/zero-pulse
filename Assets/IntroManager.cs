@@ -4,31 +4,19 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using System.Collections;
 
-// ============================================================
-// ZERO PULSE - IntroManager
-// Mostra quadros de historia (slides) um a um antes da Fase1.
-// Avanca no clique / Espaco / Enter. ESC pula tudo.
-// Cada slide tem texto, e opcionalmente um titulo e uma imagem.
-// Faz fade entre os quadros usando um CanvasGroup.
-//
-// COMO USAR (resumo): cena "Intro" com Canvas:
-//   Canvas
-//   ├── Fundo (Image escuro)
-//   ├── Conteudo (CanvasGroup)   <- arraste no campo canvasGroup
-//   │   ├── TituloText (TMP, opcional)
-//   │   ├── ImagemUI   (Image, opcional)
-//   │   └── TextoUI    (TMP)
-//   ├── DicaText (TMP: "clique para continuar - ESC pula")
-//   └── IntroManager (este script)
-// ============================================================
 public class IntroManager : MonoBehaviour
 {
     [System.Serializable]
     public class Slide
     {
-        public string titulo;                 // opcional
-        [TextArea(2, 6)] public string texto; // narracao
-        public Sprite imagem;                 // opcional
+        public string titulo;
+        [TextArea(2, 6)] public string texto;
+        public Sprite imagem;
+
+        [Header("Kael")]
+        public bool mostrarKael = false;           // ativa/desativa por slide
+        public Vector2 posicaoKael = Vector2.zero; // posição no Canvas
+        public bool kaelEspelhado = false;         // vira o sprite (sai pela esquerda)
     }
 
     [Header("Slides da historia")]
@@ -36,15 +24,19 @@ public class IntroManager : MonoBehaviour
 
     [Header("Referencias de UI")]
     [SerializeField] private TextMeshProUGUI textoUI;
-    [SerializeField] private TextMeshProUGUI tituloUI;  // opcional
-    [SerializeField] private Image imagemUI;            // opcional
-    [SerializeField] private CanvasGroup canvasGroup;   // pro fade (obrigatorio p/ fade)
+    [SerializeField] private TextMeshProUGUI tituloUI;
+    [SerializeField] private Image imagemUI;
+    [SerializeField] private CanvasGroup canvasGroup;
+
+    [Header("Kael")]
+    [SerializeField] private RectTransform kaelTransform; // arraste o objeto do Kael aqui
+    [SerializeField] private float kaelMoveDuration = 0.4f;
 
     [Header("Comportamento")]
     [SerializeField] private string proximaCena = "Fase1";
     [SerializeField] private float fadeDuration = 0.5f;
-    [SerializeField] private float autoAvancar = 0f;    // 0 = so manual; >0 = segundos por slide
-    [SerializeField] private float delayFinal = 1f;     // pausa (tela escura) apos o ultimo slide antes de carregar o jogo
+    [SerializeField] private float autoAvancar = 0f;
+    [SerializeField] private float delayFinal = 1f;
 
     private int indice = -1;
     private bool transicionando;
@@ -53,6 +45,11 @@ public class IntroManager : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1f;
+
+        // esconde o Kael no início
+        if (kaelTransform != null)
+            kaelTransform.gameObject.SetActive(false);
+
         StartCoroutine(ProximoSlide());
     }
 
@@ -60,7 +57,7 @@ public class IntroManager : MonoBehaviour
     {
         if (transicionando) return;
 
-        if (Input.GetKeyDown(KeyCode.Escape)) { CarregarJogo(); return; } // pular
+        if (Input.GetKeyDown(KeyCode.Escape)) { CarregarJogo(); return; }
 
         bool avancar = Input.GetMouseButtonDown(0)
                     || Input.GetKeyDown(KeyCode.Space)
@@ -80,23 +77,21 @@ public class IntroManager : MonoBehaviour
         transicionando = true;
         timer = 0f;
 
-        // fade out do slide atual (se houver)
         if (indice >= 0 && canvasGroup != null)
             yield return Fade(1f, 0f);
 
         indice++;
         if (slides == null || indice >= slides.Length)
         {
-            // ultimo slide ja deu fade out acima: segura na tela escura antes de comecar
             yield return new WaitForSeconds(delayFinal);
             CarregarJogo();
             yield break;
         }
 
-        // aplica o conteudo do slide
         Slide s = slides[indice];
-        if (textoUI != null) textoUI.text = s.texto;
 
+        // textos
+        if (textoUI != null) textoUI.text = s.texto;
         if (tituloUI != null)
         {
             tituloUI.text = s.titulo;
@@ -108,11 +103,45 @@ public class IntroManager : MonoBehaviour
             imagemUI.gameObject.SetActive(s.imagem != null);
         }
 
-        // fade in
+        // Kael
+        if (kaelTransform != null)
+        {
+            if (s.mostrarKael)
+            {
+                kaelTransform.gameObject.SetActive(true);
+
+                // espelha o sprite se necessário
+                Vector3 scale = kaelTransform.localScale;
+                scale.x = s.kaelEspelhado ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
+                kaelTransform.localScale = scale;
+
+                // move suavemente para a posição do slide
+                StartCoroutine(MoverKael(s.posicaoKael));
+            }
+            else
+            {
+                kaelTransform.gameObject.SetActive(false);
+            }
+        }
+
         if (canvasGroup != null) yield return Fade(0f, 1f);
-        else if (canvasGroup != null) canvasGroup.alpha = 1f;
 
         transicionando = false;
+    }
+
+    private IEnumerator MoverKael(Vector2 destino)
+    {
+        Vector2 origem = kaelTransform.anchoredPosition;
+        float t = 0f;
+
+        while (t < kaelMoveDuration)
+        {
+            t += Time.deltaTime;
+            kaelTransform.anchoredPosition = Vector2.Lerp(origem, destino, t / kaelMoveDuration);
+            yield return null;
+        }
+
+        kaelTransform.anchoredPosition = destino;
     }
 
     private IEnumerator Fade(float from, float to)
