@@ -405,7 +405,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5660255351123790223, guid: 707939053698c534e98c9c677a13e91d, type: 3}
       propertyPath: deathMessage
-      value: "Robou pegou voc\xEA"
+      value: "Robo pegou voc\xEA"
       objectReference: {fileID: 0}
     - target: {fileID: 8935100432595460498, guid: 707939053698c534e98c9c677a13e91d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -478,7 +478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5660255351123790223, guid: 707939053698c534e98c9c677a13e91d, type: 3}
       propertyPath: deathMessage
-      value: "Robou pegou voc\xEA"
+      value: "Robo pegou voc\xEA"
       objectReference: {fileID: 0}
     - target: {fileID: 8935100432595460498, guid: 707939053698c534e98c9c677a13e91d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1334,7 +1334,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5660255351123790223, guid: 707939053698c534e98c9c677a13e91d, type: 3}
       propertyPath: deathMessage
-      value: "Robou pegou voc\xEA"
+      value: "Robo pegou voc\xEA"
       objectReference: {fileID: 0}
     - target: {fileID: 8935100432595460498, guid: 707939053698c534e98c9c677a13e91d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1578,7 +1578,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5660255351123790223, guid: 707939053698c534e98c9c677a13e91d, type: 3}
       propertyPath: deathMessage
-      value: "Robou pegou voc\xEA"
+      value: "Robo pegou voc\xEA"
       objectReference: {fileID: 0}
     - target: {fileID: 8935100432595460498, guid: 707939053698c534e98c9c677a13e91d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2813,7 +2813,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5660255351123790223, guid: 707939053698c534e98c9c677a13e91d, type: 3}
       propertyPath: deathMessage
-      value: "Robou pegou voc\xEA"
+      value: "Robo pegou voc\xEA"
       objectReference: {fileID: 0}
     - target: {fileID: 8935100432595460498, guid: 707939053698c534e98c9c677a13e91d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3068,7 +3068,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2921984223202527612, guid: bd3f4e036d0054f4286a64a4c3d995ce, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 82.92
+      value: 92.06
       objectReference: {fileID: 0}
     - target: {fileID: 2921984223202527612, guid: bd3f4e036d0054f4286a64a4c3d995ce, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3596,7 +3596,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5660255351123790223, guid: 707939053698c534e98c9c677a13e91d, type: 3}
       propertyPath: deathMessage
-      value: "Robou pegou voc\xEA"
+      value: "Robo pegou voc\xEA"
       objectReference: {fileID: 0}
     - target: {fileID: 8935100432595460498, guid: 707939053698c534e98c9c677a13e91d, type: 3}
       propertyPath: m_LocalPosition.x

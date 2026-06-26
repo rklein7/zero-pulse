@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
 
     // Chamado pela FinishLine nas fases 1-4: anuncia a conclusao
     // e carrega a proxima fase.
-    public void LevelComplete(string nextSceneName)
+    public void LevelComplete(string nextSceneName, string banner = "ZONA CONCLUIDA")
     {
         if (gameEnded) return;
         gameEnded = true;
@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
         if (winSfx != null && player != null)
             AudioSource.PlayClipAtPoint(winSfx, player.transform.position, 0.9f);
 
-        ShowMessage("ZONA CONCLUIDA\n<size=40%>carregando a proxima...</size>");
+        ShowMessage(banner + "\n<size=40%>carregando a proxima...</size>");
         Invoke(nameof(LoadNextLevel), 1.6f);
     }
 

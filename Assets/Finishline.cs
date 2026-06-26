@@ -15,6 +15,7 @@ public class FinishLine : MonoBehaviour
     [Header("Fluxo de fases")]
     [SerializeField] private bool isFinalLevel = false;   // marcar SO na Fase 5
     [SerializeField] private string nextSceneName = "";   // vazio = proxima da Scene List
+    [SerializeField] private string mensagemConclusao = ""; // vazio = usa o padrao "ZONA CONCLUIDA"
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -23,7 +24,9 @@ public class FinishLine : MonoBehaviour
 
         if (isFinalLevel)
             GameManager.Instance.Win();
-        else
+        else if (string.IsNullOrEmpty(mensagemConclusao))
             GameManager.Instance.LevelComplete(nextSceneName);
+        else
+            GameManager.Instance.LevelComplete(nextSceneName, mensagemConclusao);
     }
 }
