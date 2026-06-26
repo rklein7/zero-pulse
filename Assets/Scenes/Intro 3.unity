@@ -457,8 +457,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4293984255
-  m_fontColor: {r: 1, g: 1, b: 0.9411765, a: 1}
+    rgba: 4280953509
+  m_fontColor: {r: 0.6470588, g: 0.1647059, b: 0.1647059, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -733,29 +733,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntroManager
   slides:
-  - titulo: 'A FLORESTA '
-    texto: "O sinal some entre as \xE1rvores. Mas o Pulso n\xE3o pode parar.\n"
+  - titulo: A ZONA VERMELHA
+    texto: "O transmissor est\xE1 no limite. O Pulso tamb\xE9m."
     imagem: {fileID: 2158891789428380870, guid: c314e9212d4a3cf4f8c88330ceed9a9e, type: 3}
     mostrarKael: 1
     posicaoKael: {x: -900, y: -300}
     kaelEspelhado: 0
-  - titulo: "O SIL\xCANCIO "
-    texto: "Al\xE9m da metr\xF3pole, o mundo est\xE1 quieto. Quieto demais. Algo
-      aguarda entre as sombras da floresta.\n"
+  - titulo: 'OS HOLOFOTES '
+    texto: "Sistemas de vigil\xE2ncia aut\xF4nomos. N\xE3o negociam. N\xE3o erram.
+      Kael \xE9 apenas mais um alvo no escopo."
     imagem: {fileID: 8284087734974297348, guid: c314e9212d4a3cf4f8c88330ceed9a9e, type: 3}
     mostrarKael: 1
     posicaoKael: {x: -300, y: 0}
     kaelEspelhado: 0
-  - titulo: "A FREQU\xCANCIA "
-    texto: "O transmissor capta um eco vindo das profundezas. Uma c\xE9lula de energia
-      \u2014 ou uma armadilha? Kael precisa avan\xE7ar.\n"
+  - titulo: 'O COLAPSO '
+    texto: "A cidade est\xE1 se destruindo por dentro. Chamas, escombros, protocolos
+      de emerg\xEAncia ativos. Nada aqui foi feito para sobreviventes."
     imagem: {fileID: 2833043080597125133, guid: c314e9212d4a3cf4f8c88330ceed9a9e, type: 3}
     mostrarKael: 1
     posicaoKael: {x: 0, y: 200}
     kaelEspelhado: 0
-  - titulo: CUIDADO
-    texto: "A floresta n\xE3o tem paredes, mas tem dentes. Corra, Kael. O Pulso n\xE3o
-      espera.\n"
+  - titulo: "N\xC3O PARE "
+    texto: "Esta \xE9 a parte mais dif\xEDcil. O caminho mais perigoso. Mas o sinal
+      ainda pulsa \u2014 fraco, insistente, teimoso. Assim como Kael."
     imagem: {fileID: 8676454946275842879, guid: c314e9212d4a3cf4f8c88330ceed9a9e, type: 3}
     mostrarKael: 1
     posicaoKael: {x: 200, y: 900}
@@ -1008,7 +1008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e82f646c345c1847a080ce34d6d7309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIGradient
-  topColor: {r: 0.019607844, g: 0.05490196, b: 0.11372549, a: 1}
+  topColor: {r: 0.16862746, g: 0, b: 0.047058824, a: 1}
   bottomColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!114 &1716881037
 MonoBehaviour:

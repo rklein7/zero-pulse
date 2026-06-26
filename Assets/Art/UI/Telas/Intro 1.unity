@@ -766,7 +766,7 @@ MonoBehaviour:
   canvasGroup: {fileID: 910251254}
   kaelTransform: {fileID: 0}
   kaelMoveDuration: 0.4
-  proximaCena: 
+  proximaCena: Fase1
   fadeDuration: 0.5
   autoAvancar: 0
   delayFinal: 1

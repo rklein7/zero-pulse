@@ -158,6 +158,17 @@ public class IntroManager : MonoBehaviour
 
     private void CarregarJogo()
     {
-        SceneManager.LoadScene(proximaCena);
+        // se proximaCena foi definida, usa ela; senao vai pra proxima cena da Build List
+        if (!string.IsNullOrEmpty(proximaCena))
+        {
+            SceneManager.LoadScene(proximaCena);
+            return;
+        }
+
+        int next = SceneManager.GetActiveScene().buildIndex + 1;
+        if (next < SceneManager.sceneCountInBuildSettings)
+            SceneManager.LoadScene(next);
+        else
+            SceneManager.LoadScene(0); // ultima cena -> volta ao Menu
     }
 }

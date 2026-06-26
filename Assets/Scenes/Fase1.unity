@@ -4598,7 +4598,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4140127367882255398, guid: f5aea76b1997a4545bd497f58c6b6346, type: 3}
       propertyPath: nextSceneName
-      value: Fase2
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4894207290424782924, guid: f5aea76b1997a4545bd497f58c6b6346, type: 3}
       propertyPath: m_LocalScale.x
