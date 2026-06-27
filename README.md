@@ -40,16 +40,37 @@ Parâmetros de game feel e dificuldade são expostos no Inspector (`Run Speed`, 
 
 ## Créditos de assets
 
-Arte e áudio de terceiros usados como placeholder de produção:
+Arte, fontes e áudio de terceiros utilizados (gratuitos / uso permitido, com os devidos créditos):
 
-- [PREENCHER: pack de cenário — ex. autor do tileset industrial]
-- [PREENCHER: pack do personagem — ex. Cyberpunk City 2]
-- [PREENCHER: áudio]
+**Personagens e inimigos**
+- *City Man Pixel Art Character Sprite Sheets* (Kael) — CraftPix — https://craftpix.net/freebies/city-man-pixel-art-character-sprite-sheets/
+- *Urban Zombie Pixel Art Pack* (corredor infectado) — Free Game Assets / CraftPix — https://free-game-assets.itch.io/free-urban-zombie-sprite-sheet-pixel-art-pack
+- *Free Drones Pack Pixel Art* (drone kamikaze / sentinela) — CraftPix — licença: https://craftpix.net/file-licenses/
+- *Free 2D Character 16x16 — CR71435353* (NEXUS) — JGIIO — https://jgiio.itch.io/free-2d-character-16x16-cr71435353
+- *Monsters Creatures Fantasy 2* — LuizMelo — https://luizmelo.itch.io  
+
+**Cenários e efeitos**
+- *Pixel Art Fire Asset Pack* (fogo) — Devkidd — https://devkidd.itch.io/pixel-fire-asset-pack
+- *Bulkhead Walls* e *Parallax Industrial* (Distrito Industrial) — Luis Zuno (ansimuz) — https://ansimuz.itch.io  
+- *FREE Parallax Forest Background HQ* (Floresta) 
+- *Ephemeral* e *Futuristic City Parallax* (Cidade / Setor Zero) — 
+
+**Fontes**
+- *Press Start 2P* — CodeMan38 (Google Fonts — licença SIL OFL)
+- *VT323* — Peter Hull (Google Fonts — licença SIL OFL)
+- *Future Millennium* — dafont.com (incluída no pack de drones)
+
+**Ferramentas**
+- Unity 6 (URP 2D) · C# · Git/GitHub · parte da arte feita/editada em Aseprite
 
 ## Equipe
 
-[PREENCHER: nomes dos integrantes]
+Eduardo Sichelero
+
+Rafael Augusto Klein
+
+Vitor Augusto Feil Quadros
 
 ---
 
-*Projeto acadêmico. Game Design Document completo disponível na entrega da disciplina (GDD Zero Pulse v1.1).*
+*Projeto acadêmico.*
